@@ -1,5 +1,4 @@
 use bevy::{prelude::*, ecs::{component, query}};
-//use bevy::prelude::ResMut;
 
 pub struct HelloPlugin;
 
@@ -41,16 +40,16 @@ fn greet_people(time: Res<Time>, mut timer: ResMut<GreetTimer>, query: Query<&Na
 }
 
 fn player(mut commands: Commands, asset_server:Res<AssetServer>) {
-    commands.spawn(DirectionalLightBundle {
-        directional_light : DirectionalLight {
-            color: Color::WHITE,
-            shadow_depth_bias: 0.019,
-            shadow_normal_bias: 0.6,
-            illuminance: 50000., 
-            shadows_enabled: true,
-        },
-        ..default()
-    });
+    //commands.spawn(DirectionalLightBundle {
+    //    directional_light : DirectionalLight {
+    //        color: Color::WHITE,
+    //        shadow_depth_bias: 0.019,
+    //        shadow_normal_bias: 0.6,
+    //        illuminance: 50., 
+    //        shadows_enabled: true,
+    //    },
+    //    ..default()
+    //});
 
     commands.spawn(Camera3dBundle {
         transform: Transform::from_xyz(35.,35.,35.).looking_at(Vec3::new(0., 0., 0.), Vec3::Y),
@@ -58,7 +57,7 @@ fn player(mut commands: Commands, asset_server:Res<AssetServer>) {
     });
 
     commands.spawn(SceneBundle {
-        scene : asset_server.load("C:/Users/simon.sundsfjord/OneDrive - Rana Gruber/Skrivebord/kode prosjekter/Rust prosjekter/bevy_game/models/player.gltf#Scene0"),
+        scene : asset_server.load("./models/player.gltf#Scene0"),
         ..default()
     });
 }
